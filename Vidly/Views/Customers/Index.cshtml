@@ -5,26 +5,25 @@
 }
 
 <h2>Customers</h2>
+
 @if (!Model.Any())
 {
-    <p>We don't have any customers yet!</p>
+    <p>There is no customer!</p>
 }
 else
 {
     <table>
         <thead>
-            <tr>Customer</tr>
+        <tr>
+            <th>Customer</th>
+        </tr>
         </thead>
         <tbody>
-        @foreach (var customer in Model)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(@customer.Name, "Details", "Customers", new { id = customer.Id }, null)
-                </td>
-            </tr>
-        }
-        
+            @foreach (var customer in Model)
+            {
+                <tr><td>@Html.ActionLink(@customer.Name, "Details","Customers", 
+                            new {Id = @customer.Id}, null)</td></tr>
+            }
         </tbody>
     </table>
 }
